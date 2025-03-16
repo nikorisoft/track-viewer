@@ -1,0 +1,11 @@
+semi: true
+tabWidth: 4
+singleQuote: false
+printWidth: 120
+overrides:
+  - files:
+      - "*.json"
+      - "*.yaml"
+      - "*.yml"
+    options:
+      tabWidth: 2
