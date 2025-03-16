@@ -57,5 +57,16 @@ export function lineToInfoHTML(line: ProcessedLine) {
     const timestamp = new Date(point.timestamp).toLocaleString();
     const speed = line.speed.toFixed(2);
 
-    return `<p style="margin: 0">${timestamp}</p><p style="margin: 0">${speed} km/h</p>`;
+    let str = `<p style="margin: 0">${timestamp}</p><p style="margin: 0">${speed} km/h</p>`;
+
+    if (line.point1.speed != null) {
+        const recordedSpeed = line.point1.speed.toFixed(2);
+        str += `<p style="margin: 0">(Recorded: ${recordedSpeed} km/h)</p>`;
+    }
+    if (line.point1.elevation != null) {
+        const elevation = line.point1.elevation.toFixed(2);
+        str += `<p style="margin: 0">${elevation} m</p>`;
+    }
+
+    return str;
 }

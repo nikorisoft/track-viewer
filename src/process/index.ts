@@ -28,16 +28,18 @@ export class ProcessedSegment {
             const p1 = this.points[i];
             const p2 = this.points[i + 1];
 
-            const distanceInMeter = distance([p1.longitude, p1.latitude], [p2.longitude, p2.latitude], { units: "meters" });
+            const distanceInMeter = distance([p1.longitude, p1.latitude], [p2.longitude, p2.latitude], {
+                units: "meters",
+            });
             const duration = p2.timestamp.getTime() - p1.timestamp.getTime();
-            const speed = distanceInMeter * 3.6 * 1000.0 / duration;
+            const speed = (distanceInMeter * 3.6 * 1000.0) / duration;
 
             this.lines.push({
                 point1: p1,
                 point2: p2,
                 distance: distanceInMeter,
                 speed, // km/h
-                duration
+                duration,
             });
 
             if (maximumSpeed < speed) {
